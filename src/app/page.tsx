@@ -1,7 +1,5 @@
 'use server'
-
 import { auth } from '@/auth'
-import { SignInButton } from '@/components/sign-in-button'
 import Link from 'next/link'
 import { SignOutButton } from '@/components/sign-out-button'
 
@@ -12,18 +10,20 @@ export default async function Home() {
     return (
       <div>
         <p>Hello {session.user.name}</p>
-        <Link href="/user-info"> User Info </Link>
+        <Link href="/user-info">User Info</Link>
         <br />
         <SignOutButton />
+        <br />
+        <br />
+        <Link href="/todos">Go to Todos</Link>
       </div>
     )
   }
 
   return (
-    <div>
-      {' '}
-      <p> You Are Not Signed In</p>
-      <SignInButton />
+    <div className="max-w-xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Welcome to Todo App</h1>
+      <Link href="/todos">Go to Todos</Link>
     </div>
   )
 }
