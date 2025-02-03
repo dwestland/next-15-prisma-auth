@@ -1,6 +1,13 @@
 'use client'
-import { logout } from '@/lib/actions/auth'
+import { signOut } from 'next-auth/react'
 
-export const SignOutButton = () => {
-  return <button onClick={() => logout()}> Sign Out</button>
+export function SignOutButton() {
+  return (
+    <button
+      onClick={() => signOut({ callbackUrl: '/' })}
+      className="text-red-500 hover:text-red-700"
+    >
+      Sign Out
+    </button>
+  )
 }
