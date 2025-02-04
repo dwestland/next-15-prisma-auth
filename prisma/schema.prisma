@@ -100,3 +100,12 @@ model Authenticator {
   @@id([userId, credentialID])
   @@map("authenticator")
 }
+
+model Flag {
+  id          Int      @id @default(autoincrement())
+  name       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+    @@map("flag")
+}
