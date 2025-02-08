@@ -19,8 +19,9 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   session: {
     strategy: 'database',
   },
-  // Added to stop error from known issue with next-auth v5
   debug: process.env.NODE_ENV === 'development',
+
+  // Added to stop error from known issue with next-auth v5
   logger: {
     error(error: Error) {
       if (error.message.includes('installHook.js.map')) return
