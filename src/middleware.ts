@@ -32,9 +32,8 @@ export function middleware(request: NextRequest) {
   // )
   // return NextResponse.next()
 
-
   // Define the routes to protect.
-  const protectedRoutes = ['/user-info', '/todo2']
+  const protectedRoutes = ['/user-info', '/todos2']
 
   // Check if the current request matches any of the protected routes.
   const isProtected = protectedRoutes.some((route) =>
@@ -42,12 +41,16 @@ export function middleware(request: NextRequest) {
   )
 
   if (isProtected && !sessionToken) {
-    console.log('[Middleware] No session token found for a protected route, redirecting to Sign-In')
+    console.log(
+      '[Middleware] No session token found for a protected route, redirecting to Sign-In'
+    )
     const signInUrl = new URL('/auth/signin', request.url)
     return NextResponse.redirect(signInUrl)
   }
 
-  console.log('[Middleware] Session token found or route not protected, allowing access')
+  console.log(
+    '[Middleware] Session token found or route not protected, allowing access'
+  )
   return NextResponse.next()
 }
 
