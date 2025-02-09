@@ -20,7 +20,7 @@ export default async function SignInPage() {
               await signIn('github', { redirectTo: '/' })
             }}
           >
-            <button className="rounded bg-gray-800 px-4 py-2 text-white hover:bg-gray-700">
+            <button className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
               Sign in with GitHub
             </button>
           </form>
@@ -33,6 +33,29 @@ export default async function SignInPage() {
           >
             <button className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
               Sign in with Google
+            </button>
+          </form>
+
+          <form
+            action={async (formData: FormData) => {
+              'use server'
+              const email = formData.get('email')
+              if (typeof email !== 'string' || !email) {
+                throw new Error('Missing email from request body.')
+              }
+              await signIn('resend', { email, redirectTo: '/' })
+            }}
+          >
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              className="flex-1 px-3 py-2 border rounded text-[#0a0a0a]"
+              required
+            />
+            <br />
+            <button className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+              Sign in with Email
             </button>
           </form>
         </div>

@@ -3,8 +3,9 @@ import GitHub from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@/lib/prisma'
+import Resend from 'next-auth/providers/resend'
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHub({
@@ -15,10 +16,15 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
+    Resend({
+      from: process.env.AUTH_RESEND_FROM!,
+      apiKey: process.env.AUTH_RESEND_KEY!,
+    }),
   ],
   session: {
     strategy: 'database',
   },
+  secret: process.env.AUTH_SECRET!,
   debug: process.env.NODE_ENV === 'development',
 
   // Added to stop error from known issue with next-auth v5

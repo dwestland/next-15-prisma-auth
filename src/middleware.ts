@@ -33,11 +33,11 @@ export function middleware(request: NextRequest) {
   // return NextResponse.next()
 
   // Define the routes to protect.
-  const protectedRoutes = ['/user-info', '/todos2']
+  const protectedRoutes = ['/user-info', '/todos', '/test']
 
   // Check if the current request matches any of the protected routes.
-  const isProtected = protectedRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route)
+  const isProtected = protectedRoutes.some(
+    (route) => request.nextUrl.pathname === route
   )
 
   if (isProtected && !sessionToken) {

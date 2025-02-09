@@ -8,7 +8,10 @@ export default async function Home() {
 
   if (session?.user) {
     return (
-      <div>
+      <div className="max-w-xl mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">
+          You are logged in to nex-15-prisma-auth
+        </h1>
         <p>Hello {session.user.name}</p>
         <br />
         <SignOutButton />
@@ -33,9 +36,13 @@ export default async function Home() {
           Sign In - /api/auth/signin
         </Link>
         <br />
+        <Link href="/auth/signin">Sign In Page</Link>
+        <br />
         <Link href="/user-info">User Info</Link>
         <br />
         <Link href="/todos">Go to Todos</Link>
+        <br />
+        <Link href="/test">Test</Link>
         <br />
         <Link href="/todos2">Go to Todos 2</Link>
       </div>
