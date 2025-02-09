@@ -1,25 +1,38 @@
 import Link from 'next/link'
 import React from 'react'
+import { SignOutButton } from './sign-out-button'
+import { auth } from '@/auth'
 
-function TopNav() {
+async function TopNav() {
+  const session = await auth()
   return (
-    <header className="bg-blue-300 text-white p-4">
-      <nav className="container mx-auto flex items-center justify-start space-x-4">
-        <Link href="/" className="hover:underline">
-          Home
-        </Link>
-        <Link href="/auth/signin" className="hover:underline">
-          Sign In
-        </Link>
-        <Link href="/user-info" className="hover:underline">
-          User Info
-        </Link>
-        <Link href="/todos" className="hover:underline">
-          Todos
-        </Link>
-        <Link href="/todos2" className="hover:underline">
-          Todos 2
-        </Link>
+    <header className="container mx-auto bg-blue-200 p-4">
+      <nav className="mx-auto flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <Link href="/" className="hover:underline">
+            Home
+          </Link>
+          <Link href="/user-info" className="hover:underline">
+            User Info
+          </Link>
+          <Link href="/todos" className="hover:underline">
+            Todos
+          </Link>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          {session?.user ? (
+            <SignOutButton />
+          ) : (
+            <Link href="/auth/signin" className="hover:underline">
+              Sign In
+            </Link>
+          )}
+          {/* <Link href="/auth/signin" className="hover:underline">
+            Sign In
+          </Link>
+          <SignOutButton /> */}
+        </div>
       </nav>
     </header>
   )

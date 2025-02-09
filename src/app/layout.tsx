@@ -28,26 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TopNav />
-        {/* <header className="bg-gray-350 text-white p-4">
-          <nav className="container mx-auto flex items-center justify-start space-x-4">
-            <Link href="/" className="hover:underline">
-              Home
-            </Link>
-            <Link href="/auth/signin" className="hover:underline">
-              Sign In
-            </Link>
-            <Link href="/user-info" className="hover:underline">
-              User Info
-            </Link>
-            <Link href="/todos" className="hover:underline">
-              Todos
-            </Link>
-            <Link href="/todos2" className="hover:underline">
-              Todos 2
-            </Link>
-          </nav>
-        </header> */}
-        <main>{children}</main>
+        <main className="container mx-auto">{children}</main>
       </body>
     </html>
   )

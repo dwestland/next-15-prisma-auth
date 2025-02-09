@@ -25,3 +25,8 @@ body {
     @apply text-blue-600 hover:text-blue-800 transition-colors;
   }
 }
+
+/* TODO: remove after initial development */
+div {
+  outline: 1px solid orange;
+}
