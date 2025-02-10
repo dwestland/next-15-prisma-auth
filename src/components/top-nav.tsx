@@ -18,6 +18,9 @@ async function TopNav() {
           <Link href="/todos" className="hover:underline">
             Todos
           </Link>
+          <Link href="/messages" className="hover:underline">
+            Messages
+          </Link>
         </div>
 
         <div className="flex items-center space-x-4">
