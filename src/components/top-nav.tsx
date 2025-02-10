@@ -21,6 +21,9 @@ async function TopNav() {
           <Link href="/messages" className="hover:underline">
             Messages
           </Link>
+          <Link href="/chat" className="hover:underline">
+            Chat
+          </Link>
         </div>
 
         <div className="flex items-center space-x-4">
