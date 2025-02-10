@@ -1,6 +1,9 @@
 'use server'
 
 import { Resend } from 'resend'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 export async function sendMessage(formData: FormData) {
   const name = formData.get('name')
@@ -18,6 +21,12 @@ export async function sendMessage(formData: FormData) {
   const resend = new Resend(process.env.AUTH_RESEND_KEY)
 
   try {
+    // Insert the submitted message into the Message table
+    await prisma.message.create({
+      data: { name, email, message },
+    })
+
+    // Send the email
     await resend.emails.send({
       from: process.env.AUTH_RESEND_FROM!,
       to: process.env.AUTH_RESEND_FROM!,
