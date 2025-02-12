@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">nex-15-prisma-auth</h1>
+      <h1 className="text-2xl font-bold mb-4">next-15-prisma-auth</h1>
       <p>You are NOT logged in</p>
 
       <Link
